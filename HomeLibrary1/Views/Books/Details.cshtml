@@ -1,0 +1,108 @@
+﻿@model HomeLibrary1.Models.Book
+
+@{
+    ViewData["Title"] = "Szczegóły";
+}
+<h1>Szczegóły książki @Html.DisplayFor(Model=>Model.Title)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Isbn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Isbn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsBorrowed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsBorrowed)
+        </dd>
+    </dl>
+</div>
+@{
+    if(Model.Id==1){
+        <div>
+            <img src="~/pictures/1.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+    if (Model.Id == 2)
+    {
+        <div>
+            <img src="~/pictures/2.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+    if (Model.Id == 3)
+    {
+        <div>
+            <img src="~/pictures/3.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+    if (Model.Id == 4)
+    {
+        <div>
+            <img src="~/pictures/4.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+    if (Model.Id == 5)
+    {
+        <div>
+            <img src="~/pictures/5.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+    if (Model.Id == 6)
+    {
+        <div>
+            <img src="~/pictures/6.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+    if (Model.Id == 7)
+    {
+        <div>
+            <img src="~/pictures/7.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+    if(Model.Id>=8){
+        <div>
+            <img src="~/pictures/soon.jpg" class="img-fluid rounded" alt="Responsive image" />
+        </div>
+    }
+}
+<br />
+@{
+    if(Model.IsBorrowed==true){
+    <form asp-action="Return" method="post">
+                <input type="hidden" asp-for="@Model.Id" name="ID" />
+                <input type="submit" value="Zwróć" class="btn btn-primary" />
+    </form>
+    }
+    else{
+    <form asp-action="Assign" method="post">
+                <input type="hidden" asp-for="@Model.Id" name="ID" />
+                <input type="submit" value="Wypożycz" class="btn btn-primary" />
+    </form>
+    }
+}
+<br/>
+<a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+<a asp-action="Index">Wróć</a>

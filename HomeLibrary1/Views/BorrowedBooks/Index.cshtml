@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HomeLibrary1.Models.BorrowedBooks>
+
+@{
+    ViewData["Title"] = "Wypożyczone książki";
+
+    if (Model.Any())
+    {
+        <h1>Spis wypożyczonych książek</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Book)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.BorrowDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Book.Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BorrowDate)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <h1>Brak wypożyczonych książek</h1>
+    }
+}
+
+

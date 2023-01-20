@@ -1,0 +1,13 @@
+﻿@using HomeLibrary1.Areas.Identity.Data
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<HomeLibrary1User> SignInManager
+@inject UserManager<HomeLibrary1User> UserManager
+
+<div class="justify-content-center text-center">
+    <h1>Gratulacje! @User.Identity?.Name!</h1>
+    <h1>Książka została wypożyczona</h1>
+    <br />
+    <form action="@Url.Action("Index", "Books")" method="get">
+        <input type="submit" value="Powrót" class="btn btn-success" />
+    </form>
+</div>

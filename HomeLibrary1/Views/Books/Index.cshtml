@@ -36,8 +36,15 @@
                 @Html.DisplayFor(modelItem => item.IsBorrowed)
             </td>
             <td>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Szczegóły</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Usuń</a>
+                @{
+                    @if(item.IsBorrowed== true){
+                         <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Szczegóły</a>
+                    }
+                    else{
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Szczegóły</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Usuń</a>
+                    }
+                }
             </td>
         </tr>
 }
